@@ -1,4 +1,4 @@
-/* --- Reset Global --- */
+
 * {
     margin: 0;
     padding: 0;
@@ -7,350 +7,292 @@
 }
 
 body {
-    background-color: #0b0f19; /* Fundo escuro total da página */
+    background: #0b0f19;
     color: #ffffff;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 40px 20px;
+    padding: 32px 20px;
 }
 
-/* --- Contentor Principal (Dashboard Completo) --- */
 .container {
     width: 100%;
     max-width: 1100px;
+    margin: auto;
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 30px;
 }
 
-/* --- Cabeçalho --- */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-}
-
-.logo h1 {
-    font-size: 1.25rem;
-    font-weight: 700;
-}
-
-.unit-select {
-    background-color: #161e2e;
-    color: #ffffff;
-    border: 1px solid #1e293b;
-    padding: 8px 14px;
-    border-radius: 8px;
-    cursor: pointer;
-    outline: none;
-    font-size: 0.9rem;
-}
-
-/* --- Secção de Pesquisa (Centralizada como na foto) --- */
-.search-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 16px;
-    margin: 10px 0;
-}
-
-.search-section h2 {
-    font-size: 2.2rem;
-    font-weight: 700;
-}
-
-.section-box {
-    display: flex;
-    gap: 12px;
-    width: 100%;
-    max-width: 650px;
-}
-
-#city-input {
-    flex: 1;
-    background-color: #121826;
-    border: 1px solid #1e293b;
-    padding: 14px 20px;
-    border-radius: 12px;
-    color: #ffffff;
-    font-size: 1rem;
-    outline: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-#city-input::placeholder {
-    color: #64748b;
-}
-
-.search {
-    background-color: #3b82f6;
-    color: #ffffff;
-    border: none;
-    padding: 0 28px;
-    border-radius: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
-    font-size: 1rem;
-}
-
-.search:hover {
-    background-color: #2563eb;
-}
-
-/* --- Grelha Principal (2 Colunas: Esquerda e Direita) --- */
-.dashboard-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 24px;
-    width: 100%;
-}
-
-.left-column {
-    display: flex;
-    flex-direction: column;
     gap: 20px;
 }
 
-.right-column {
-    display: flex;
-    flex-direction: column;
+.logo {
+    font-size: 1.6rem;
 }
 
-/* --- Cartão Principal do Tempo (Gradiente Azul) --- */
-.colorful-panel {
-    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-    border-radius: 16px;
-    padding: 28px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.25);
+button, select {
+    cursor: pointer;
 }
 
-.city-name {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 6px;
-}
-
-.day-name {
-    font-size: 0.95rem;
-    color: #bfdbfe;
-}
-
-.current-temp {
-    font-size: 3.5rem;
-    font-weight: 700;
-}
-
-/* --- Métricas Adicionais (Grelha 2x2) --- */
-.metrics-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-}
-
-.metric-card {
-    background-color: #121826;
-    border-radius: 14px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    border: 1px solid #1e293b;
-}
-
-.metric-card span {
-    font-size: 0.9rem;
-    color: #94a3b8;
-}
-
-.metric-card strong {
-    font-size: 1.4rem;
+button {
+    border: none;
+    border-radius: 9px;
+    padding: 10px 15px;
+    background: #2563eb;
+    color: white;
     font-weight: 600;
 }
 
-/* --- Previsão Diária (7 Dias) --- */
-.daily-forecast-section {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+button:hover {
+    background: #1d4ed8;
 }
 
-.daily-forecast-section h4 {
-    font-size: 1.1rem;
-    font-weight: 600;
-}
-
-.daily-list {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 10px;
-}
-
-.daily-card {
-    background-color: #121826;
-    border: 1px solid #1e293b;
-    border-radius: 12px;
-    padding: 14px 6px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.85rem;
-}
-
-.daily-card strong {
-    font-size: 0.95rem;
-}
-
-.daily-card small {
-    color: #64748b;
-}
-
-/* --- Previsão Horária (Coluna da Direita) --- */
-.forecast-section {
-    background-color: #121826;
-    padding: 20px;
-    border-radius: 16px;
-    border: 1px solid #1e293b;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.forecast-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-}
-
-.forecast-header h4 {
-    font-size: 1.1rem;
-    font-weight: 600;
-}
-
-#day-select {
-    background-color: #161e2e;
-    color: #ffffff;
-    border: 1px solid #1e293b;
-    padding: 6px 10px;
+select {
+    padding: 8px;
+    border: 1px solid #263247;
     border-radius: 8px;
-    outline: none;
-    font-size: 0.85rem;
+    background: #161e2e;
+    color: white;
 }
 
-.hourly-list-vertical {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    overflow-y: auto;
-    max-height: 520px;
-    padding-right: 4px;
-}
-
-.hourly-item {
-    background-color: #161e2e;
-    padding: 14px 18px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid #1e293b;
-}
-
-/* --- Estilos do Menu Flutuante de Unidades --- */
 .settings-dropdown-container {
     position: relative;
 }
 
-.units-toggle-btn {
-    background-color: #161e2e;
-    color: #ffffff;
-    border: 1px solid #1e293b;
-    padding: 8px 14px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: background 0.2s;
-}
-
-.units-toggle-btn:hover {
-    background-color: #1e293b;
-}
-
 .units-menu {
     position: absolute;
+    z-index: 10;
     right: 0;
     top: 45px;
-    background-color: #121826;
-    border: 1px solid #1e293b;
-    border-radius: 12px;
-    padding: 16px;
     width: 240px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    padding: 16px;
+    border: 1px solid #263247;
+    border-radius: 12px;
+    background: #121826;
+    box-shadow: 0 10px 25px #0008;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    z-index: 100;
+    gap: 10px;
 }
 
 .units-menu.hidden {
     display: none;
 }
 
-.units-section-title {
+.units-menu label {
     font-size: 0.85rem;
     color: #94a3b8;
-    font-weight: 600;
-    border-bottom: 1px solid #1e293b;
-    padding-bottom: 6px;
 }
 
-.unit-group {
+.search-section {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
 }
 
-.unit-group label {
-    font-size: 0.75rem;
+.search-section h2 {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+}
+
+.search-box {
+    width: 100%;
+    max-width: 650px;
+    display: flex;
+    gap: 12px;
+}
+
+#city-input {
+    flex: 1;
+    min-width: 0;
+    padding: 14px 18px;
+    border-radius: 12px;
+    border: 1px solid #263247;
+    background: #121826;
+    color: white;
+    font-size: 1rem;
+}
+
+#city-input::placeholder {
     color: #64748b;
 }
 
-.unit-sub-select {
-    background-color: #161e2e;
-    color: #ffffff;
-    border: 1px solid #1e293b;
-    padding: 6px 10px;
-    border-radius: 6px;
-    outline: none;
-    font-size: 0.85rem;
-    cursor: pointer;
+#error-message {
+    color: #fca5a5;
+    min-height: 1.2em;
 }
 
-/* --- Responsividade (Para Telemóveis e Ecrãs Pequenos) --- */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 24px;
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 0;
+}
+
+.right-column {
+    min-width: 0;
+}
+
+.weather-panel {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    border-radius: 16px;
+    padding: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.weather-panel h2 {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    overflow-wrap: anywhere;
+}
+
+.weather-panel p {
+    color: #dbeafe;
+}
+
+.temperature {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    white-space: nowrap;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.metric-card {
+    background: #121826;
+    border: 1px solid #263247;
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+}
+
+.metric-card span {
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+.metric-card strong {
+    font-size: 1.35rem;
+    overflow-wrap: anywhere;
+}
+
+h3 {
+    margin-bottom: 14px;
+    font-size: 1.05rem;
+}
+
+.daily-list {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.daily-card {
+    background: #121826;
+    border: 1px solid #263247;
+    border-radius: 12px;
+    padding: 14px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+}
+
+.daily-card small {
+    color: #94a3b8;
+}
+
+.forecast-panel {
+    background: #121826;
+    border: 1px solid #263247;
+    border-radius: 16px;
+    padding: 20px;
+    height: 100%;
+}
+
+.forecast-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.hourly-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 560px;
+    overflow-y: auto;
+}
+
+.hourly-item {
+    background: #161e2e;
+    border: 1px solid #263247;
+    border-radius: 10px;
+    padding: 14px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 @media (max-width: 850px) {
     .dashboard-grid {
-        grid-template-columns: 1fr; /* Transforma em uma única coluna no telemóvel */
-    }
-    
-    .search-section h2 {
-        font-size: 1.6rem;
+        grid-template-columns: 1fr;
     }
 
     .daily-list {
-        grid-template-columns: repeat(4, 1fr); /* Ajusta os dias da semana para caber melhor */
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 20px 12px;
     }
 
+    .header {
+        align-items: flex-start;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .search-box {
+        flex-direction: column;
+    }
+
+    .weather-panel {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .daily-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .forecast-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
 }
