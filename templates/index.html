@@ -1,129 +1,134 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Previsão do Tempo</title>
-    <!-- Apenas o caminho correto do Flask para o CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <title>Weather Now</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
 <body>
-    <div class="container">
-        <!-- Cabeçalho -->
-        <header class="header">
-            <div class="logo">
-               <h1>
-        <img src="{{ url_for('static', filename='IMG/download.png') }}" alt="Logo" style="width: 32px; height: 32px; vertical-align: middle; margin-right: 8px; border-radius: 50%;"> 
-        Weather Now
-    </h1>
-            </div>
-            <!-- Menu de Unidades Avançado (Estilo do Desafio) -->
-            <div class="settings-dropdown-container">
-                <button id="units-btn" class="units-toggle-btn">
-                    ⚙️ Units ▾
-                </button>
-                <div id="units-menu" class="units-menu hidden">
-                    <div class="units-section-title">Switch to Imperial</div>
-                    
-                    <div class="unit-group">
-                        <label>Temperature</label>
-                        <select id="temp-unit" class="unit-sub-select">
-                            <option value="celsius">Celsius (°C)</option>
-                            <option value="fahrenheit">Fahrenheit (°F)</option>
-                        </select>
-                    </div>
+<main class="container">
 
-                    <div class="unit-group">
-                        <label>Wind Speed</label>
-                        <select id="wind-unit" class="unit-sub-select">
-                            <option value="kmh">km/h</option>
-                            <option value="mph">mph</option>
-                        </select>
-                    </div>
+    <header class="header">
+        <h1 class="logo">☁ Weather Now</h1>
 
-                    <div class="unit-group">
-                        <label>Precipitation</label>
-                        <select id="precip-unit" class="unit-sub-select">
-                            <option value="mm">Millimeters (mm)</option>
-                            <option value="inch">Inches (in)</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </header>
+        <div class="settings-dropdown-container">
+            <button id="units-btn" type="button">
+                ⚙️ Unidades ▾
+            </button>
 
-        <!-- Barra de Pesquisa -->
-        <section class="search-section">
-             <h2>How's the sky looking today?</h2>
-             <div class="section-box">
-                <input type="text" id="city-input" placeholder="Search for a place (e.g., Brasília, São Paulo)...">
-                <button id="search-btn" class="search">Search</button>
-             </div>
-        </section>
+            <div id="units-menu" class="units-menu hidden">
+                <label for="temp-unit">Temperatura</label>
+                <select id="temp-unit">
+                    <option value="celsius">Celsius (°C)</option>
+                    <option value="fahrenheit">Fahrenheit (°F)</option>
+                </select>
 
-        <!-- Layout de Duas Colunas (Dashboard) -->
-        <div class="dashboard-grid">
-            <!-- Coluna Esquerda -->
-            <div class="left-column">
-                <!-- Painel Principal da Cidade -->
-                <section class="colorful-panel">
-                    <div class="colorful-box"> 
-                        <h2 id="city-name" class="city-name">Brasília, Brazil</h2>
-                        <p id="current-date" class="day-name">Carregando data...</p>
-                    </div>
-                    <div class="temperature-display">
-                        <span id="current-temp" class="current-temp">--°</span>
-                    </div>
-                </section>
+                <label for="wind-unit">Velocidade do vento</label>
+                <select id="wind-unit">
+                    <option value="kmh">km/h</option>
+                    <option value="mph">mph</option>
+                </select>
 
-                <!-- Métricas Adicionais (Com suporte a cliques/interatividade) -->
-                <section class="metrics-grid">
-                    <div class="metric-card" style="cursor: pointer;" title="Clique para ver mais detalhes">
-                        <span>Feels Like</span>
-                        <strong id="feels-like">--°</strong>
-                    </div>
-                    <div class="metric-card" style="cursor: pointer;" title="Clique para ver mais detalhes">
-                        <span>Humidity</span>
-                        <strong id="humidity">--%</strong>
-                    </div>
-                    <div class="metric-card" style="cursor: pointer;" title="Clique para ver mais detalhes">
-                        <span>Wind</span>
-                        <strong id="wind-speed">-- km/h</strong>
-                    </div>
-                    <div class="metric-card" style="cursor: pointer;" title="Clique para ver mais detalhes">
-                        <span>Precipitation</span>
-                        <strong id="precipitation">-- mm</strong>
-                    </div>
-                </section>
-
-                <!-- Previsão Diária (7 Dias) -->
-                <section class="daily-forecast-section">
-                    <h4>Daily forecast</h4>
-                    <div id="daily-list" class="daily-list">
-                        <!-- Preenchido dinamicamente via JS -->
-                    </div>
-                </section>
-            </div>
-
-            <!-- Coluna Direita (Previsão Horária) -->
-            <div class="right-column">
-                <section class="forecast-section">
-                    <div class="forecast-header">
-                        <h4>Hourly forecast</h4>
-                        <select id="day-select">
-                            <option value="0">Hoje</option>
-                        </select>
-                    </div>
-                    <div id="hourly-list" class="hourly-list-vertical">
-                        <!-- Preenchido dinamicamente via JS -->
-                    </div>
-                </section>
+                <label for="precip-unit">Precipitação</label>
+                <select id="precip-unit">
+                    <option value="mm">Milímetros (mm)</option>
+                    <option value="inch">Polegadas (in)</option>
+                </select>
             </div>
         </div>
-    </div>
+    </header>
 
-    <!-- Script JavaScript -->
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <section class="search-section">
+        <h2>Como estará o tempo hoje?</h2>
+
+        <form id="search-form" class="search-box">
+            <input
+                id="city-input"
+                type="text"
+                placeholder="Pesquise uma cidade..."
+                required
+            >
+            <button type="submit">Pesquisar</button>
+        </form>
+
+        <p id="error-message" role="alert"></p>
+    </section>
+
+    <div class="dashboard-grid">
+
+        <section class="left-column">
+            <div class="weather-panel">
+                <div>
+                    <h2 id="city-name">Brasília, Brasil</h2>
+                    <p id="current-date">Carregando...</p>
+                </div>
+
+                <strong id="current-temp" class="temperature">
+                    --°
+                </strong>
+            </div>
+
+            <div class="metrics-grid">
+                <article class="metric-card">
+                    <span>Sensação térmica</span>
+                    <strong id="feels-like">--°</strong>
+                </article>
+
+                <article class="metric-card">
+                    <span>Umidade</span>
+                    <strong id="humidity">--%</strong>
+                </article>
+
+                <article class="metric-card">
+                    <span>Vento</span>
+                    <strong id="wind-speed">-- km/h</strong>
+                </article>
+
+                <article class="metric-card">
+                    <span>Precipitação</span>
+                    <strong id="precipitation">-- mm</strong>
+                </article>
+            </div>
+
+            <section>
+                <h3>Previsão para 7 dias</h3>
+                <div id="daily-list" class="daily-list">
+                    Carregando previsão...
+                </div>
+            </section>
+        </section>
+
+        <section class="right-column">
+            <div class="forecast-panel">
+                <div class="forecast-header">
+                    <h3>Previsão por hora</h3>
+                    <select id="day-select" aria-label="Selecionar dia">
+                        <option value="0">Hoje</option>
+                    </select>
+                </div>
+
+                <div id="hourly-list" class="hourly-list">
+                    Carregando previsão...
+                </div>
+            </div>
+        </section>
+
+    </div>
+</main>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"
+        defer></script>
 </body>
 </html>
